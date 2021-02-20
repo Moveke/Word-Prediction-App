@@ -1120,9 +1120,6 @@ interpolation_twograms <- function(two_grams, lambda1,lambda2){
 
 
 
-
-
-
 #Set lambda values for the interpolation.
 lambda1_4gram <- 0.25
 lambda2_4gram <- 0.25
@@ -1154,9 +1151,6 @@ three_grams_twitter_li <- interpolation_threegrams(three_grams_twitter_p, lambda
 two_grams_blogs_li <- interpolation_twograms(two_grams_blogs_p, lambda1_2gram, lambda2_2gram)
 two_grams_news_li <- interpolation_twograms(two_grams_news_p, lambda1_2gram, lambda2_2gram)
 two_grams_twitter_li <- interpolation_twograms(two_grams_twitter_p, lambda1_2gram, lambda2_2gram)
-
-
-
 
 
 
