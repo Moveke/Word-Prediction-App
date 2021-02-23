@@ -1,0 +1,41 @@
+---
+title: "Word Prediction App (Rea-Ova)"
+author: "Moveke"
+date: "2/23/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Summary
+
+This proyect is about the design and developing of the best prediction text app in the market. The contents of this presentation are:
+
+- General algorithm explanation
+- How to use the app
+- Further Analysis
+
+## General algorithm explanation
+
+In fact this is a really simple algorithm, we are looking for fast and reliable response in the prediction, we use three text samples provided by swiftkey, and then we clean that information to have a good and clean corpora.
+
+Then we construct several dictionaries based on different n-grams and asign a ocurrance probability to each one of them.
+
+To predict the next word of a sentence, we just clean the sentence that the user give us, and find the best match usin the probability in the dictionaries of n-grams. Thats it!!!, you have your next word.!!!
+
+## How to use the App
+
+Just go to the app site:
+
+<https://moveke.shinyapps.io/Skeeming-WPA/>
+
+And type or copy any sentence you want in the "Sentence" box, almost inmediatly you have a prediction in the "Predicted Word" section of the app. Just like that!!!
+
+
+## Further Analysis
+
+If you want to help developing this app, you can find all the scripts in my github:
+
+- Github: <https://github.com/Moveke/Word-Prediction-App>
