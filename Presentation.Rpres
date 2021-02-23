@@ -1,13 +1,17 @@
----
-title: "Word Prediction App (Rea-Ova)"
-author: "Moveke"
-date: "2/23/2021"
-output: html_document
----
+Word Prediction App (Rea-Ova)
+========================================================
+author: Moveke
+date: 23 February 2021
+autosize: true
+
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+==========================================================
 
 ## Summary
 
@@ -17,6 +21,9 @@ This project is about the design and developing of the best prediction text app 
 - How to use the app
 - Further Analysis
 
+
+==========================================================
+
 ## General algorithm explanation
 
 In fact this is a really simple algorithm, we are looking for fast and reliable response in the prediction, we use three text samples provided by swiftkey, and then we clean that information to have a good and clean corpora.
@@ -24,6 +31,8 @@ In fact this is a really simple algorithm, we are looking for fast and reliable 
 Then we construct several dictionaries based on different n-grams and assign a occurrence probability to each one of them.
 
 To predict the next word of a sentence, we just clean the sentence that the user give us, and find the best match using the probability in the dictionaries of n-grams. That's it!!!, you have your next word.!!!
+
+===========================================================
 
 ## How to use the App
 
@@ -33,9 +42,17 @@ Just go to the app site:
 
 And type or copy any sentence you want in the "Sentence" box, almost immediately you have a prediction in the "Predicted Word" section of the app. Just like that!!!
 
+=============================================================
 
 ## Further Analysis
 
 If you want to help developing this app, you can find all the scripts in my github:
 
-- <Ghttps://github.com/Moveke/Word-Prediction-App>
+- Github: <https://github.com/Moveke/Word-Prediction-App>
+
+=============================================================
+
+    
+    
+    
+    !!!!!!!!!!!THANK YOU AND ENJOY!!!!!!!!!!
