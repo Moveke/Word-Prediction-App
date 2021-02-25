@@ -1,58 +1,61 @@
-#Front end user interface code for the word prediction
-#Shiny application.
-suppressWarnings(library(shiny))
+# ui.R ####
+# Coursera Data Science Capstone Project (https://www.coursera.org/course/dsscapstone)
+# Shiny UI script
+# 2016-01-23
+
+# Libraries and options ####
+library(shiny)
+library(shinythemes)
+
+# Define the app ####
 
 shinyUI(fluidPage(
-  
-  #Do some additional preformatting of the app user interface, including
-  #setting background color, font style and font size.
-  tags$head(tags$style(
-    HTML('
-        body, input, button, select { 
-            font-family: "Helvetica";
-            font-size: 30px;
-            font-weight: bold;
-            background-color: #CBFAFF;
-        }')
-  )),  
-  
-  #Make the text of the input phrase typed in by the user nice and large.
-  tags$style("#phrase {font-size:30px;height:30px;}"),
-  
-  # Application title
-  titlePanel(HTML("Word Prediction Application")),
 
-  #Sidebar with a radiobutton panel to select the prediction context of
-  #blogs, news or twitter.
-  sidebarLayout(
-    sidebarPanel(
-      h3("Choose document type prediction (context):"),
-      radioButtons("doc_type", "Document Type:",
-                   c("Blogs" ="blogs",
-                     "News" = "news",
-                     "Twitter" = "twitter")),
-      p("After selecting the prediction type above, enter a phrase of
-        words in the text box in the main panel and then push the 'Predict!'
-        button.  The predicted word following your phrase will then
-        be shown.", style='font-size:16px'),
-      p(" "),
-      p("A presentation providing more details about this app is provided at the following link:",
-        style='font-size:16px'), 
-      tags$a(href="http://rpubs.com/pinion87/wordprediction", "Prediction App", 
-             style='font-size:16px')     
-    ),
-  
-    #In the main panel, show the text box that allows the user to type
-    #the input phrase, the button to execute the prediction and also show
-    #the predicted word upon completion.  
-    mainPanel(
-      titlePanel(HTML("Next Word Prediction")),
-      h3("Please enter a test phrase and then hit the predict button"),
-      textAreaInput("phrase", "Test phrase:", height= "100%", width= "200%"),
-      actionButton("predictButton", "Predict!",style='font-size:30px'),
-      h3("Predicted word ('NA' means no additional words found):"),
-      textOutput("nText")
-              
-      )
-    )
-))
+    # Theme
+    theme = shinytheme("flatly"),
+    
+    # Application title
+    titlePanel("Word Predictor"),
+
+# Sidebar ####    
+    sidebarLayout(
+        
+        sidebarPanel(
+        
+        # Text input
+        textInput("text", label = ('Please enter some text'), value = ''),
+        
+        # Number of words slider input
+        sliderInput('slider',
+                    'Maximum number of words',
+                    min = 0,  max = 1000,  value = 10
+        ),
+
+        # Table output
+        dataTableOutput('table')),
+
+# Mainpanel ####
+
+        mainPanel(
+            
+            wellPanel(
+                
+                # Link to report
+                helpText(a('More information on the app',
+                           href='http://rpubs.com/akselix/word_prediction', 
+                           target = '_blank')
+                ),
+                
+                # Link to repo
+                helpText(a('Code repository',
+                           href='https://github.com/akselix/capstone_swiftkey/tree/master/shiny',
+                           target = '_blank')
+                ),
+        
+        # Wordcloud output
+        plotOutput('wordcloud')
+        )
+    ) 
+)
+)
+)
