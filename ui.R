@@ -1,61 +1,35 @@
-# ui.R ####
-# Coursera Data Science Capstone Project (https://www.coursera.org/course/dsscapstone)
-# Shiny UI script
-# 2016-01-23
-
-# Libraries and options ####
 library(shiny)
-library(shinythemes)
 
-# Define the app ####
-
+# Define UI for application that realizes single word prediction
 shinyUI(fluidPage(
-
-    # Theme
-    theme = shinytheme("flatly"),
+  
+  # Application title
+  titlePanel("WORD PREDICTION APP"),
     
-    # Application title
-    titlePanel("Word Predictor"),
-
-# Sidebar ####    
-    sidebarLayout(
-        
-        sidebarPanel(
-        
-        # Text input
-        textInput("text", label = ('Please enter some text'), value = ''),
-        
-        # Number of words slider input
-        sliderInput('slider',
-                    'Maximum number of words',
-                    min = 0,  max = 1000,  value = 10
-        ),
-
-        # Table output
-        dataTableOutput('table')),
-
-# Mainpanel ####
-
-        mainPanel(
-            
-            wellPanel(
-                
-                # Link to report
-                helpText(a('More information on the app',
-                           href='http://rpubs.com/akselix/word_prediction', 
-                           target = '_blank')
-                ),
-                
-                # Link to repo
-                helpText(a('Code repository',
-                           href='https://github.com/akselix/capstone_swiftkey/tree/master/shiny',
-                           target = '_blank')
-                ),
-        
-        # Wordcloud output
-        plotOutput('wordcloud')
-        )
-    ) 
-)
-)
-)
+    
+  
+  # Main panel with: input for enter text phrase, submit button, 
+  # output for cleaned text phrase and output for single word prediction
+  mainPanel(
+    
+    # Select box with a select input for each n-gram model
+    selectInput("model", label = "Select n-gram model dataset:", 
+                choices = list("News Data" = 2, "Twitter Data" = 1), 
+                selected = 1),
+    
+    
+    # Input box to enter text phrase without last word
+    br(),  
+    textAreaInput("textInput", label = "Enter word:", value = "", width = "100%", rows = 6),
+    
+       # Action button to submit entered text phrase
+    actionButton("action", label = tags$b("Predict"), width = "25%"),
+    br(),br(),
+    tags$b("Predicted Next Word:"),
+    
+    # Output box to display predicted word
+    fluidRow(column(4, verbatimTextOutput("predictedWord", placeholder = TRUE)))
+    
+  )
+  
+    ))
