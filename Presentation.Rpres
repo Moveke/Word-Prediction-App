@@ -1,58 +1,56 @@
-Word Prediction App (Rea-Ova)
+Presentation Capstone Final Project
 ========================================================
 author: Moveke
-date: 23 February 2021
+date: 26 February 2021 
 autosize: true
 
+First Slide
+========================================================
+<br/>
+The main objective of this capstone project was to create a word prediction algorithm and build an interface on the basis of that algorithm.
 
+The main objectice of this capstone project was to :
 
+1. A Shiny app that takes as input a phrase (multiple words) in a text box input and outputs a prediction of the next word.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+2. A slide deck consisting of no more than 5 slides created with R Studio Presenter pitching your algorithm.
 
-==========================================================
+Word Prediction Application
+========================================================
+<br/>
+Below is the link to the application:
 
-## Summary
+[https://moveke.shinyapps.io/Word_Prediction_App/](https://moveke.shinyapps.io/Word_Prediction_App/)
 
-This project is about the design and developing of the best prediction text app in the market. The contents of this presentation are:
+-Data Used: Coursera-SwiftKey<br/>
+-Software: RStudio<br/>
+-Libraries: shiny, tm, stringr, dplyr, data.table<br/>
 
-- General algorithm explanation
-- How to use the app
-- Further Analysis
+Algorithm (N-grams)
+========================================================
+<br/>
+<ol>
+<li>Read the data from the Coursera-SwiftKey dataset
+<li>Format and clean the data
+<li>Create ngram models using cleaned data
+<li>Predict the next words using n-gram models
+<ol/>
 
+Algorithm (Shiny Application)
+========================================================
+<br/>
+<ol>
+<li>Select type of dataset (News or Twitter)
+<li>Input the text
+<li>Predict the next word using n-gram algorithm
+<li>Output is the predicted word
+<ol/>
 
-==========================================================
+Acknowledgement
+========================================================
+<br/>
+I would like to thank Roger Peng and Johns Hopkins University for curating such a comprehensive course. I would also like to thank Coursera for providing a platform which enables people to enroll in such excellent courses. 
+<br/>
 
-## General algorithm explanation
-
-In fact this is a really simple algorithm, we are looking for fast and reliable response in the prediction, we use three text samples provided by swiftkey, and then we clean that information to have a good and clean corpora.
-
-Then we construct several dictionaries based on different n-grams and assign a occurrence probability to each one of them.
-
-To predict the next word of a sentence, we just clean the sentence that the user give us, and find the best match using the probability in the dictionaries of n-grams. That's it!!!, you have your next word.!!!
-
-===========================================================
-
-## How to use the App
-
-Just go to the app site:
-
-<https://moveke.shinyapps.io/Skeeming-WPA/>
-
-And type or copy any sentence you want in the "Sentence" box, almost immediately you have a prediction in the "Predicted Word" section of the app. Just like that!!!
-
-=============================================================
-
-## Further Analysis
-
-If you want to help developing this app, you can find all the scripts in my github:
-
-- Github: <https://github.com/Moveke/Word-Prediction-App>
-
-=============================================================
-
-    
-    
-    
-    !!!!!!!!!!!THANK YOU AND ENJOY!!!!!!!!!!
+Thanks,<br/>
+Moveke
