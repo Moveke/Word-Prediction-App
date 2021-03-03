@@ -1,35 +1,59 @@
 library(shiny)
+library(shinythemes)
+library(markdown)
+library(dplyr)
+library(tm)
+library(NLP)
 
-# Define UI for application that realizes single word prediction
-shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("WORD PREDICTION APP"),
-    
-    
-  
-  # Main panel with: input for enter text phrase, submit button, 
-  # output for cleaned text phrase and output for single word prediction
-  mainPanel(
-    
-    # Select box with a select input for each n-gram model
-    selectInput("model", label = "Select n-gram model dataset:", 
-                choices = list("News Data" = 2, "Twitter Data" = 1), 
-                selected = 1),
-    
-    
-    # Input box to enter text phrase without last word
-    br(),  
-    textAreaInput("textInput", label = "Enter word:", value = "", width = "100%", rows = 6),
-    
-       # Action button to submit entered text phrase
-    actionButton("action", label = tags$b("Predict"), width = "25%"),
-    br(),br(),
-    tags$b("Predicted Next Word:"),
-    
-    # Output box to display predicted word
-    fluidRow(column(4, verbatimTextOutput("predictedWord", placeholder = TRUE)))
-    
-  )
-  
-    ))
+shinyUI(
+    navbarPage("Next Word Predict",
+               theme = shinytheme("spacelab"),
+               tabPanel("Home",
+                        fluidPage(
+                            titlePanel("Home"),
+                            sidebarLayout(
+                                sidebarPanel(
+                                    textInput("userInput",
+                                              "Enter a word or phrase:",
+                                              value =  "",
+                                              placeholder = "Enter text here"),
+                                    br(),
+                                    sliderInput("numPredictions", "Number of Predictions:",
+                                                value = 1.0, min = 1.0, max = 3.0, step = 1.0)
+                                ),
+                                mainPanel(
+                                    h4("Input text"),
+                                    verbatimTextOutput("userSentence"),
+                                    br(),
+                                    h4("Predicted words"),
+                                    verbatimTextOutput("prediction1"),
+                                    verbatimTextOutput("prediction2"),
+                                    verbatimTextOutput("prediction3")
+                                )
+                            )
+                        )
+               ),
+               tabPanel("About",
+                        h3("About Next Word Predict"),
+                        br(),
+                        div("Next Word Predict is a Shiny app that uses a text
+                            prediction algorithm to predict the next word(s)
+                            based on text entered by a user.",
+                            br(),
+                            br(),
+                            "The predicted next word will be shown when the app
+                            detects that you have finished typing one or more
+                            words. When entering text, please allow a few
+                            seconds for the output to appear.",
+                            br(),
+                            br(),
+                            "Use the slider tool to select up to three next
+                            word predictions. The top prediction will be
+                            shown first followed by the second and third likely
+                            next words.",
+                            br(),
+                            br(),
+                        
+    )
+)
+))
